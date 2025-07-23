@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Isabella's seaicret archives</title>
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://use.typekit.net/htd3qri.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    /* === Global Body Styles === */
+    body {
+      margin: 0;
+      padding: 50px;
+      background-image: url(wavegif.gif);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #6477d7;
+      font-family: "pf-videotext", sans-serif;
+      font-weight: 400;
+      color: #230202;
+      border: groove 10px #2a18d1;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      position: relative;
+    }
+
+    /* === Header === */
+    #header {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      background-image: url(mermaidbg.jpg);
+      border: 5px solid #00ccff;
+      text-align: center;
+      padding: 12px;
+      border-bottom: 5px dashed #00ccff;
+      z-index: 10;
+      box-shadow: 2px 2px 8px rgb(131, 1, 191);
+    }
+
+    /* === Sidebar === */
+    #sidebar {
+      width: 180px;
+      background: #ff00ee92;
+      border-style: outset;
+      box-shadow: 4px 4px 0px #38313194, 2px 2px 8px rgba(0, 0, 0, 0.539);
+      border-color: #2200e0c5;
+      padding: 10px;
+      margin: 100px 0 20px 20px;
+      height: fit-content;
+    }
+
+    /* === Main Container === */
+    #container {
+      max-width: 550px;
+      width: 100%;
+      background-image: url(meanwhilegif.gif);
+      background-size: cover;
+      border-style: outset;
+      box-shadow: 4px 4px 0px #17006b, 2px 2px 8px rgba(0, 50, 228, 0.895);
+      margin: 100px 0 20px 0;
+    }
+
+    #content {
+      padding: 15px;
+      background: #f0f0f000;
+    }
+
+    /* === Headings === */
+    h1 { font-size: 2rem; font-weight: 600; }
+    h2 { font-size: 1.4rem; font-weight: 500; }
+    h3 { font-size: 1.2rem; font-weight: 500; }
+
+    /* === ASCII Box === */
+    .float-box {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid #00ccff;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-family: monospace;
+      color: #fff;
+      white-space: pre-wrap;
+    }
+
+    /* === Floating Box Cluster on Right === */
+    .floating-boxes {
+      position: absolute;
+      top: 120px;
+      right: 20px;
+      padding: 10px;
+      background: rgba(43, 206, 204, 0.3);
+      border: 4px groove #2a18d1;
+      box-shadow: 4px 4px 0px #383131, 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    /* === Decorations === */
+    .decor {
+      position: absolute;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .decor-topleft {
+      width: 100px;
+      top: 20px;
+      left: 20px;
+    }
+
+    .decor-topright {
+      top: 20px;
+      right: 20px;
+      width: 120px;
+      height: auto;
+      z-index: 999;
+      border: 4px solid #6687ff;
+      border-radius: 10px;
+      box-shadow: 2px 2px 6px rgba(255, 105, 180, 0.7);
+    }
+
+    .decor-right {
+      width: 200px;
+      top: 85%;
+      right: 30px;
+      transform: translateY(-50%);
+      border: 5px outset #2a18d1;
+      box-shadow: 4px 4px 0px #383131, 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .urchin-wrapper {
+      position: absolute;
+      top: 20px;
+      left: 160px;
+      width: 120px;
+      z-index: 998;
+    }
+
+    .urchin-wrapper img {
+      width: 100%;
+      border: 4px solid #66ccff;
+      border-radius: 10px;
+      box-shadow: 2px 2px 6px rgba(0, 150, 255, 0.5);
+    }
+
+    .urchin-text {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-family: 'Press Start 2P', monospace;
+      animation: flash 1s infinite alternate;
+      font-size: 0.45rem;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    /* === Bottom Crab Note === */
+    .bottom-left-box {
+      position: absolute;
+      bottom: 90px;
+      left: 30px;
+      background-image: url(crabgif.gif);
+      background-size: cover;
+      color: white;
+      padding: 12px;
+      border: 3px double #006f91;
+      border-radius: 8px;
+      font-family: monospace;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    /* === Box Style === */
+    .box {
+      background-color: rgba(43, 206, 204, 0.635);
+      border: 3px outset #2200e0c5;
+      padding: 16px;
+      box-shadow: 4px 4px 0px #383131, 2px 2px 8px rgba(0, 0, 0, 0.895);
+      color: #000000;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.7rem;
+    }
+
+    .box h3 {
+      color: #001a76;
+      background-image: url(dolphinmeme.jpg);
+      background-size: cover;
+      margin-top: 0;
+      font-size: 0.9rem;
+    }
+
+    a { color: #ffcc00; text-decoration: none; }
+    a:hover { text-decoration: underline; cursor: pointer; }
+
+    .flash-text {
+      animation: flash 1s infinite alternate;
+      color: #ff00ff;
+      font-weight: bold;
+    }
+
+    @keyframes flash {
+      0% { opacity: 1; color: #ff00ff; }
+      50% { opacity: 0.2; color: #00ffff; }
+      100% { opacity: 1; color: #ff00ff; }
+    }
+
+    @media (max-width: 768px) {
+      body { flex-direction: column; align-items: center; }
+      #sidebar, #container { margin: 10px auto; }
+      .floating-boxes { position: static; width: 100%; margin-top: 20px; }
+      .container { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+    }
+  </style>
+</head>
+
+<body>
+<!-- HEADER -->
+<div id="header">
+<h1>✧˖°.Isabelle's Sea-cret Archives✧˖°.</h1>
+</div>
+
+<!-- Decorations -->
+<img src="anglerfish.gif" class="decor decor-topleft">
+<img src="pokemongif.gif" class="decor decor-right">
+<img src="fishcharms.jpg" class="decor decor-topright" alt="fish charms">
+<div class="urchin-wrapper">
+<img src="urchin.gif" alt="urchin">
+<div class="urchin-text">Urchin Alert!</div>
+</div>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+<h2>Captain's Log</h2>
+<ul>
+<li><a href="#">Readings</a></li>
+<li><a href="#">Passion</a></li>
+<li><a href="#">Structure</a></li>
+<li><a href="#">Final</a></li>
+</ul>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="container">
+<div id="content">
+<h2 class="flash-text">BLUB BLUB BLUB</h2>
+<div class="float-box">
+        ██╗░░██╗██████╗░░█████╗░<br>
+        ██║░░██║╚════██╗██╔══██╗<br>
+        ███████║░░███╔═╝██║░░██║<br>
+        ██╔══██║██╔══╝░░██║░░██║<br>
+        ██║░░██║███████╗╚█████╔╝<br>
+        ╚═╝░░╚═╝╚══════╝░╚════╝░
+</div>
+</div>
+</div>
+
+<!-- FLOATING BOXES -->
+<div class="floating-boxes">
+<div class="container">
+<div class="box">
+<h3>Hello!</h3>
+<p>𓂃𓂃𓂃𓊝࿐𓂃𓂃𓂃<br>𓇼 ⋆.˚  𓆝⋆.˚    𓇼 ⋆｡˚ 𓆞<br>𓆉𓆝𓇼𓆟  𖦹°‧𓆝𓆡𓆜</p>
+</div>
+<div class="box">
+<h3>Protect Our Oceans!</h3>
+<p>⋆｡˚🪼🫧˚｡⋆⋆｡˚🪼🫧˚｡⋆</p>
+</div>
+<div class="box">
+<h3>Sea ya later!</h3>
+<p>𓆉⋆｡˚⋆❀ 🐚🫧𓇼 ˖°</p>
+</div>
+</div>
+</div>
+
+<!-- BOTTOM LEFT BOX -->
+<div class="bottom-left-box">
+<p>This is a homepage!!</p>
+</div>
+</body>
+</html>
